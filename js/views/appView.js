@@ -53,6 +53,8 @@ app.AppView = Backbone.View.extend({
 				 if (!app.ResultCollection.contains(food)) {
                      app.ResultCollection.create(food);
               }
+              // var btnWrap = '<input draggable="true" ondragstart="drag(event)" type="button" id="food-result-item" value="' + name + ' ' + calories +'"/>';
+              // 	$('#list').append(btnWrap);
 				});
 
 			});

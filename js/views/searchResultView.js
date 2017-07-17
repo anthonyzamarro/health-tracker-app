@@ -2,7 +2,10 @@ var app = app || {};
 
 
 var SearchResultView = Backbone.View.extend({
-	tagName: 'li',
+	tagName: 'button',
+
+	className: 'food-result-item',
+
 	template: _.template($('#search-results-template').html()),
 
   initialize: function() {

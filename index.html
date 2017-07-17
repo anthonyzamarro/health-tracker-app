@@ -17,11 +17,12 @@
     </ul>
   </div>
   <div class="selected-food-view">
-    <div id="breakfast"></div>
-    <div id="lunch"></div>
-    <div id="dinner"></div>
-    <div id="snack"></div>
-    <div id="total"></div>
+    <h2>Selected Food</h2>
+    <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div>
+    <div id="lunch" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Lunch</div>
+    <div id="dinner" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Dinner</div>
+    <div id="snack" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Snacks</div>
+    <div id="total">Total: </div>
   </div>
 </section>
 
@@ -32,6 +33,25 @@
 
 <script type="text/template" id="selected-food-template">
   <%= name %>
+</script>
+
+<!-- Drag/drop functions -->
+<script type="text/javascript">
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+  var id = document.getElementById('food-result-item');
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    console.log(data)
+    ev.target.appendChild(document.getElementById(data));
+}
 </script>
 
 
