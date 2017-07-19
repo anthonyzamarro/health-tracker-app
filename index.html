@@ -10,33 +10,112 @@
 	<header>
 	<h1>Health Tracker</h1>
 		<input id="search" placeholder="Search For Food" />
+    <input id="clearBtn" type="button" value="clear">
 	</header>
   <div class="food-result-view">
   <h2>Search Results</h2>
-  	<ul id="list">
+    <table>
+      <ul id="list">
     </ul>
+    </table>
   </div>
   <div class="selected-food-view">
     <h2>Selected Food</h2>
-    <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div>
+    <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div><button id="testBtn">Button</button>
     <div id="lunch" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Lunch</div>
     <div id="dinner" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Dinner</div>
     <div id="snack" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Snacks</div>
     <div id="total">Total: </div>
   </div>
+  <div class="additional-nutrition-view">
+    <h1>Additional Nutirional Information</h1>
+    <table>
+
+<td>
+<tr>
+  <th>Calories</th>
+  <!-- <th>Fat Calories</th> -->
+  <th>Total Fat</th>
+  <!-- <th>Saturated Fat</th> -->
+  <!-- <th>Trans Fat</th> -->
+  <th>Cholestoral</th>
+  <th>Sodium</th>
+  <th>Total Carb</th>
+  <!-- <th>Dietary Fiber</th> -->
+  <!-- <th>Sugar</th> -->
+  <th>Protein</th>
+</tr>
+<br>
+<br>
+<tr>
+  <th>Vitamin A</th>
+  <th>Calcium</th>
+</tr>
+<tr>
+  <th>Vitamin C</th>
+  <th>Iron</th>
+</tr>
+</td>
+
+
+
+
+
+      
+    </table>
+  </div>
+
 </section>
 
 
 <script type="text/template" id="search-results-template">
-  <%= name %>
+<td>
+  <div draggable="true" ondragstart="drag(event)" id="food-item">
+    <p class="result-name"><%= name %> </p>
+    <p class="result-brand_name"><%= brand_name %> </p>
+    <p class="result-calories"><%= calories %> </p>
+  </div>
+</td>
 </script>
 
 <script type="text/template" id="selected-food-template">
   <%= name %>
 </script>
 
+<script type="text/template" id="additional-nutrition-info-template">
+<table>
+<td>
+<tr>
+  <th>Calories</th>
+  <!-- <th>Fat Calories</th> -->
+  <th>Total Fat</th>
+  <!-- <th>Saturated Fat</th> -->
+  <!-- <th>Trans Fat</th> -->
+  <th>Cholestoral</th>
+  <th>Sodium</th>
+  <th>Total Carb</th>
+  <!-- <th>Dietary Fiber</th> -->
+  <!-- <th>Sugar</th> -->
+  <th>Protein</th>
+</tr>
+<tr>
+  
+</tr>
+<br>
+<tr>
+  <th>Vitamin A</th>
+  <th>Calcium</th>
+</tr>
+<tr>
+  <th>Vitamin C</th>
+  <th>Iron</th>
+</tr>
+</td>
+</table>
+</script>
+
 <!-- Drag/drop functions -->
-<script type="text/javascript">
+<script>
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -49,7 +128,6 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log(data)
     ev.target.appendChild(document.getElementById(data));
 }
 </script>
