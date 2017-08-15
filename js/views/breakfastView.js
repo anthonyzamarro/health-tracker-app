@@ -14,9 +14,18 @@ app.BreakfastView = Backbone.View.extend({
 	  	'drop': 'dropped'
   	},
 
-	initialize: function() {},
+	initialize: function() {
+      this.listenTo(app.SelectedCollection, 'change', this.addSelectedFood);
+
+  },
 
 	render: function() {},
+
+  addSelectedFood: function(selectedFood) {
+    // var selectedFoodCollection = app.SelectedCollection.add(selectedFood)
+    console.log(app.SelectedCollection.add(selectedFood))
+    
+  },
 
 	dragEnter: function (e) {
   		e.preventDefault();
@@ -30,7 +39,10 @@ app.BreakfastView = Backbone.View.extend({
   		var data = ev.originalEvent.dataTransfer.getData("text/plain");
   		ev.target.appendChild(document.getElementById(data));
       // console.log(app.SelectedCollection)
-  	}
+      this.addSelectedFood(data);
+  	},
+
+
 });
 
 new app.BreakfastView

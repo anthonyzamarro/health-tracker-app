@@ -17,9 +17,7 @@ app.AppView = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(app.ResultCollection, 'add', this.addFoodResult);
-		// this.listenTo(SelecetedFoodView, 'add', this.addFoodResult);
-		this.listenTo(app.ResultCollection, 'add', this.addSelectedFood);
-		// this.listenTo(app.ResultCollection, 'destroy', this.add);
+		// this.listenTo(app.SelectedCollection, 'add', this.addSelectedFood);
 
 		app.ResultCollection.fetch();
 		app.SelectedCollection.fetch();
@@ -27,19 +25,17 @@ app.AppView = Backbone.View.extend({
 	},
 
 	addFoodResult: function(resultFood) {
-		// console.log(resultFood)
 		var foodResult = new SearchResultView({
 			model: resultFood
 		});
 		$('#list').append(foodResult.render().el);
 	},
 
-	addSelectedFood: function(selectedFood) {
-		// console.log(selectedFood)
-		var selectedFoodCollection = app.SelectedCollection.add(selectedFood)
-		console.log(selectedFoodCollection)
+	// addSelectedFood: function(selectedFood) {
+	// 	// var selectedFoodCollection = app.SelectedCollection.add(selectedFood)
+	// 	console.log(app.SelectedCollection.add(selectedFood))
 		
-	},
+	// },
 
 	clearFoodList: function() {
 		_.invoke(app.ResultCollection.toArray(), 'destroy');
