@@ -17,10 +17,6 @@ body {
 	overflow: scroll;
 }
 
-button {
-	font-size: 1.2em;
-}
-
 #addedFood {
 	width: 40%;
 	float: right;

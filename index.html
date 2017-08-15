@@ -12,6 +12,8 @@
 		<input id="search" placeholder="Search For Food" />
     <input id="clearBtn" type="button" value="clear">
 	</header>
+
+  <!-- food searched for by the user -->
   <div class="food-result-view">
   <h2>Search Results</h2>
     <table>
@@ -19,119 +21,111 @@
     </ul>
     </table>
   </div>
+
+  <!-- food selected by the user -->
   <div class="selected-food-view">
     <h2>Selected Food</h2>
-    <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div><button id="testBtn">Button</button>
-    <div id="lunch" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Lunch</div>
-    <div id="dinner" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Dinner</div>
-    <div id="snack" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Snacks</div>
-    <div id="total">Total: </div>
-  </div>
-  <div class="additional-nutrition-view">
-    <h1>Additional Nutirional Information</h1>
     <table>
-
-<td>
-<tr>
-  <th>Calories</th>
-  <!-- <th>Fat Calories</th> -->
-  <th>Total Fat</th>
-  <!-- <th>Saturated Fat</th> -->
-  <!-- <th>Trans Fat</th> -->
-  <th>Cholestoral</th>
-  <th>Sodium</th>
-  <th>Total Carb</th>
-  <!-- <th>Dietary Fiber</th> -->
-  <!-- <th>Sugar</th> -->
-  <th>Protein</th>
-</tr>
-<br>
-<br>
-<tr>
-  <th>Vitamin A</th>
-  <th>Calcium</th>
-</tr>
-<tr>
-  <th>Vitamin C</th>
-  <th>Iron</th>
-</tr>
-</td>
-
-
-
-
-
-      
+      <!-- <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div> -->
+      <div id="breakfast" class="drop-area">Breakfast</div>
+      <div id="lunch" class="drop-area">Lunch</div>
+      <div id="dinner" class="drop-area">Dinner</div>
+      <div id="snack" class="drop-area">Snacks</div>
+      <div id="total">Total: </div>
     </table>
   </div>
+
+  <!-- Additional nutrition information -->
+<div class="additional-nutrition-view">
+  <h1>Additional Nutirional Information</h1>
+    <table>
+      <td>
+      <tr>
+        <th>Calories</th>
+        <!-- <th>Fat Calories</th> -->
+        <th>Total Fat</th>
+        <!-- <th>Saturated Fat</th> -->
+        <!-- <th>Trans Fat</th> -->
+        <th>Cholestoral</th>
+        <th>Sodium</th>
+        <th>Total Carb</th>
+        <!-- <th>Dietary Fiber</th> -->
+        <!-- <th>Sugar</th> -->
+        <th>Protein</th>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <th>Vitamin A</th>
+        <th>Calcium</th>
+      </tr>
+      <tr>
+        <th>Vitamin C</th>
+        <th>Iron</th>
+      </tr>
+      </td>
+    </table>
+</div>
+
 
 </section>
 
 
+<!-- Search results template -->
 <script type="text/template" id="search-results-template">
 <td>
-  <div draggable="true" ondragstart="drag(event)" id="food-item">
-    <p class="result-name"><%= name %> </p>
-    <p class="result-brand_name"><%= brand_name %> </p>
-    <p class="result-calories"><%= calories %> </p>
-  </div>
-</td>
+    <p>
+      <%= name %> 
+      <%= brand_name %> 
+      <%= calories %> 
+    </p>
+ </td>
 </script>
 
+
+<!-- Selected food template -->
 <script type="text/template" id="selected-food-template">
-  <%= name %>
-</script>
-
-<script type="text/template" id="additional-nutrition-info-template">
-<table>
 <td>
-<tr>
-  <th>Calories</th>
-  <!-- <th>Fat Calories</th> -->
-  <th>Total Fat</th>
-  <!-- <th>Saturated Fat</th> -->
-  <!-- <th>Trans Fat</th> -->
-  <th>Cholestoral</th>
-  <th>Sodium</th>
-  <th>Total Carb</th>
-  <!-- <th>Dietary Fiber</th> -->
-  <!-- <th>Sugar</th> -->
-  <th>Protein</th>
-</tr>
-<tr>
-  
-</tr>
-<br>
-<tr>
-  <th>Vitamin A</th>
-  <th>Calcium</th>
-</tr>
-<tr>
-  <th>Vitamin C</th>
-  <th>Iron</th>
-</tr>
+  <div class="calorie-counter" id="breakfast-calories"></div>
+  <div class="calorie-counter" id="lunch-calories"></div>
+  <div class="calorie-counter" id="dinner-calories"></div>
+  <div class="calorie-counter" id="snack-calories"></div>
 </td>
-</table>
+  
 </script>
 
-<!-- Drag/drop functions -->
-<script>
-function allowDrop(ev) {
-    ev.preventDefault();
-}
 
-function drag(ev) {
-  var id = document.getElementById('food-result-item');
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
-</script>
-
+<!-- Additional food template -->
+<script type="text/template" id="additional-nutrition-info-template">
+  <table>
+    <td>
+    <tr>
+      <th>Calories</th>
+      <!-- <th>Fat Calories</th> -->
+      <th>Total Fat</th>
+      <!-- <th>Saturated Fat</th> -->
+      <!-- <th>Trans Fat</th> -->
+      <th>Cholestoral</th>
+      <th>Sodium</th>
+      <th>Total Carb</th>
+      <!-- <th>Dietary Fiber</th> -->
+      <!-- <th>Sugar</th> -->
+      <th>Protein</th>
+    </tr>
+    <tr>
+      
+    </tr>
+    <br>
+    <tr>
+      <th>Vitamin A</th>
+      <th>Calcium</th>
+    </tr>
+    <tr>
+      <th>Vitamin C</th>
+      <th>Iron</th>
+    </tr>
+    </td>
+  </table></script>
 
 <script src="js/lib/jquery-3.2.1.min.js"></script>
 <script src="js/lib/underscore-min.js"></script>
@@ -142,10 +136,18 @@ function drop(ev) {
 <script src="js/models/FoodModel.js"></script>
 <script src="js/collections/selectedCollection.js"></script>
 <script src="js/collections/resultCollection.js"></script>
+
+
+
+
 <script src="js/views/selectedFoodView.js"></script>
 <script src="js/views/searchResultView.js"></script>
+<script src="js/views/breakfastView.js"></script>
+<script src="js/views/lunchView.js"></script>
+<script src="js/views/dinnerView.js"></script>
+<script src="js/views/snackView.js"></script>
 <script src="js/views/appView.js"></script>
-<!-- <script src="js/routers/router.js"></script>
- --><script src="js/app.js"></script>
+
+<script src="js/app.js"></script>
   </body>
 </html>
