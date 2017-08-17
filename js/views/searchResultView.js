@@ -5,8 +5,6 @@ app.SearchResultView = Backbone.View.extend({
 
   className: 'search-result-item',
 
-  id: "food-item",
-
   template: _.template($('#search-results-template').html()),
 
   initialize: function() {},

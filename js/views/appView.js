@@ -24,25 +24,24 @@ app.AppView = Backbone.View.extend({
 		var searchResultView = new app.SearchResultView({
 			model: resultFood
 		});
-		$('#list').append(searchResultView.render().el, "<button id='addFoodBtn'>Add</button");
+		$('#list').append(searchResultView.render().el);
 	},
 
 	addSelectedFood: function(selectedFood) {
 		var length = app.ResultCollection.models;
 		var loopedResult;
-
-		length.forEach(function(e) {
-			loopedResult = e;
-		})
 		
-		console.log(loopedResult)
+		length.forEach(function(e){
+			loopedResult = e
+		});
 
-		var t = app.SelectedCollection.add({
+
+		var selectedCollection = app.SelectedCollection.add({
 			name: loopedResult.attributes.name,
 			brand_name: loopedResult.attributes.brand_name
 		});
 		var selectedFoodView = new app.SelectedFoodView({
-			model: t
+			model: selectedCollection
 		});
 		$(".selected-food-view").append(selectedFoodView.render().el)
 	},

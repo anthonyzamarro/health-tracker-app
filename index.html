@@ -26,7 +26,6 @@
   <div class="selected-food-view">
     <h2>Selected Food</h2>
     <table> 
-      <!-- <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div> -->
   <!--     <div id="breakfast" class="drop-area">Breakfast</div>
       <div id="lunch" class="drop-area">Lunch</div>
       <div id="dinner" class="drop-area">Dinner</div>
@@ -73,13 +72,10 @@
 
 <!-- Search results template -->
 <script type="text/template" id="search-results-template">
-<td>
-    <p>
-      <%= name %> 
-      <%= brand_name %> 
-      <%= calories %> 
-    </p>
- </td>
+      <td> <%= name %> </td>
+      <td><%= brand_name %> </td>
+      <td> <%= calories %> </td>
+      <td><button id="addFoodBtn">Add</button></td>
 </script>
 
 
