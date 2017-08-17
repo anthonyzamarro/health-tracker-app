@@ -25,32 +25,32 @@
   <!-- food selected by the user -->
   <div class="selected-food-view">
     <h2>Selected Food</h2>
-    <table>
+    <table> 
       <!-- <div id="breakfast" class="drop-area" ondrop="drop(event)" ondragover="allowDrop(event)">Breakfast</div> -->
-      <div id="breakfast" class="drop-area">Breakfast</div>
+  <!--     <div id="breakfast" class="drop-area">Breakfast</div>
       <div id="lunch" class="drop-area">Lunch</div>
       <div id="dinner" class="drop-area">Dinner</div>
       <div id="snack" class="drop-area">Snacks</div>
-      <div id="total">Total: </div>
-    </table>
+      <div id="total">Total: </div> -->
+    </table> 
   </div>
 
   <!-- Additional nutrition information -->
 <div class="additional-nutrition-view">
   <h1>Additional Nutirional Information</h1>
-    <table>
+<!--     <table>
       <td>
       <tr>
         <th>Calories</th>
-        <!-- <th>Fat Calories</th> -->
+        <th>Fat Calories</th>
         <th>Total Fat</th>
-        <!-- <th>Saturated Fat</th> -->
-        <!-- <th>Trans Fat</th> -->
+        <th>Saturated Fat</th>
+        <th>Trans Fat</th>
         <th>Cholestoral</th>
         <th>Sodium</th>
         <th>Total Carb</th>
-        <!-- <th>Dietary Fiber</th> -->
-        <!-- <th>Sugar</th> -->
+        <th>Dietary Fiber</th>
+        <th>Sugar</th>
         <th>Protein</th>
       </tr>
       <br>
@@ -64,7 +64,7 @@
         <th>Iron</th>
       </tr>
       </td>
-    </table>
+    </table> -->
 </div>
 
 
@@ -86,10 +86,8 @@
 <!-- Selected food template -->
 <script type="text/template" id="selected-food-template">
 <td>
-  <div class="calorie-counter" id="breakfast-calories"></div>
-  <div class="calorie-counter" id="lunch-calories"></div>
-  <div class="calorie-counter" id="dinner-calories"></div>
-  <div class="calorie-counter" id="snack-calories"></div>
+  <%= name %>
+
 </td>
   
 </script>

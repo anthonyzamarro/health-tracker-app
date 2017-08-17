@@ -10,32 +10,40 @@ app.AppView = Backbone.View.extend({
 	events: {
 		'keypress': 'search',
 		'click #clearBtn': 'clearFoodList',
-		'drop .drop-area': 'addSelectedFood',
-		// 'drop #selected-food-template': 'addSelectedFood'
+		'click #addFoodBtn': 'addSelectedFood'
 	},
 
 
 	initialize: function() {
 		this.listenTo(app.ResultCollection, 'add', this.addFoodResult);
-		// this.listenTo(app.SelectedCollection, 'add', this.addSelectedFood);
+		// this.listenTo(app.ResultCollection, 'change', this.addSelectedFood);
 
-		app.ResultCollection.fetch();
-		app.SelectedCollection.fetch();
+		// app.ResultCollection.fetch();
+		// app.SelectedCollection.fetch();
 		this.clearFoodList()
 	},
 
 	addFoodResult: function(resultFood) {
-		var foodResult = new SearchResultView({
+		var searchResultView = new app.SearchResultView({
 			model: resultFood
 		});
-		$('#list').append(foodResult.render().el);
+		// console.log(searchResultView)
+		$('#list').append(searchResultView.render().el, "<button id='addFoodBtn'>Add</button");
 	},
 
-	// addSelectedFood: function(selectedFood) {
-	// 	// var selectedFoodCollection = app.SelectedCollection.add(selectedFood)
-	// 	console.log(app.SelectedCollection.add(selectedFood))
-		
-	// },
+	addSelectedFood: function(selectedFood) {
+		var t = app.SelectedCollection.add({
+			name: "poo", 
+			brand_name: "poopy"
+		});
+		var selectedFoodView = new app.SelectedFoodView({
+			model: t
+		});
+
+		console.log(t)
+		console.log(selectedFoodView)
+		$(".selected-food-view").append(selectedFoodView.render().el, "hey")
+	},
 
 	clearFoodList: function() {
 		_.invoke(app.ResultCollection.toArray(), 'destroy');
@@ -77,10 +85,6 @@ app.AppView = Backbone.View.extend({
 				});
 				food.save();
 			});
-
 		}
-
 	}
 });
-
-// app.appView = new app.AppView;

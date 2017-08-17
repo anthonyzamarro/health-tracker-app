@@ -1,33 +1,18 @@
 var app = app || {};
 
 app.SelectedFoodView = Backbone.View.extend({
-  el: '.selected-food-view',
+  tagName: 'tr',
 
-  events: {
-  	'drop .drop-area': 'addSelectedFood',
-  },
+  template: _.template($('#selected-food-template').html()),
 
-  initialize: function() {
-    // this.listenTo(app.appView, 'add', this.addSelectedFood);
-  	this.listenTo(app.ResultCollection, 'add', this.addSelectedFood);
-  	// this.listenTo(app.LunchView, 'add', this.addSelectedFood);
-  	// this.listenTo(DinnerView, 'add', this.addSelectedFood);
-  	// this.listenTo(SnackView, 'add', this.addSelectedFood);
-  },
+  initialize: function() {},
 
   render: function () {
-
-  },
-
-  addSelectedFood: function(food) {
-
-    // var data = food.dataTransfer.getData("text/plain");
-      // food.target.appendChild(document.getElementById(data));
-    // console.log(app.ResultCollection)
-   },
+    this.$el.html(this.template(this.model.attributes));
+    return this;
+  }
+  
 
 });
-
-new app.SelectedFoodView
 
 
