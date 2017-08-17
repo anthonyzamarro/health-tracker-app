@@ -16,10 +16,7 @@ app.AppView = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(app.ResultCollection, 'add', this.addFoodResult);
-		// this.listenTo(app.ResultCollection, 'change', this.addSelectedFood);
 
-		// app.ResultCollection.fetch();
-		// app.SelectedCollection.fetch();
 		this.clearFoodList()
 	},
 
@@ -27,22 +24,27 @@ app.AppView = Backbone.View.extend({
 		var searchResultView = new app.SearchResultView({
 			model: resultFood
 		});
-		// console.log(searchResultView)
 		$('#list').append(searchResultView.render().el, "<button id='addFoodBtn'>Add</button");
 	},
 
 	addSelectedFood: function(selectedFood) {
+		var length = app.ResultCollection.models;
+		var loopedResult;
+
+		length.forEach(function(e) {
+			loopedResult = e;
+		})
+		
+		console.log(loopedResult)
+
 		var t = app.SelectedCollection.add({
-			name: "poo", 
-			brand_name: "poopy"
+			name: loopedResult.attributes.name,
+			brand_name: loopedResult.attributes.brand_name
 		});
 		var selectedFoodView = new app.SelectedFoodView({
 			model: t
 		});
-
-		console.log(t)
-		console.log(selectedFoodView)
-		$(".selected-food-view").append(selectedFoodView.render().el, "hey")
+		$(".selected-food-view").append(selectedFoodView.render().el)
 	},
 
 	clearFoodList: function() {
